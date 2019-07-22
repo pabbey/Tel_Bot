@@ -1,21 +1,25 @@
 import time, datetime
 import telepot
 from telepot.loop import MessageLoop
+from geopy.geocoders import Nominatim
 
 now = datetime.datetime.now()
 
 def action(msg):
     chat_id = msg['chat']['id']
     command = msg['text']
+    geolocator = Nominatim(user_agent="specify_your_app_name_here")
+    location = geolocator.geocode(command)
+    
 
     print ('Received: %s' % command)
 
-    if command == '/hi':
+    if command == 'hi':
         telegram_bot.sendMessage (chat_id, str("Hi! Am Sunny , how may i help you ?"))
-    elif command == '/time':
+    elif command == 'time':
         telegram_bot.sendMessage(chat_id, str(now.hour)+str(":")+str(now.minute))
-    elif command == '/logo':
-        telegram_bot.sendPhoto (chat_id, photo = "https://i.pinimg.com/avatars/circuitdigest_1464122100_280.jpg")
+    elif command == 'location':
+            telegram_bot.sendMessage(chat_id, str(location.address))        
     elif command == '/file':
         telegram_bot.sendDocument(chat_id, document=open('/home/pi/Aisha.py'))
     elif command == '/audio':
