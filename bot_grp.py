@@ -2,6 +2,9 @@ import time, datetime
 import telepot
 from telepot.loop import MessageLoop
 from geopy.geocoders import Nominatim
+from newsapi import NewsApiClient
+
+newsapi = NewsApiClient(api_key='b0ac87d0931e4cdda08c441d97d9daf8')
 
 now = datetime.datetime.now()
 
@@ -20,8 +23,8 @@ def action(msg):
         telegram_bot.sendMessage(chat_id, str(now.hour)+str(":")+str(now.minute))
     elif command == 'location':
             telegram_bot.sendMessage(chat_id, str(location.address))        
-    elif command == '/file':
-        telegram_bot.sendDocument(chat_id, document=open('/home/pi/Aisha.py'))
+    elif command == 'news':
+        telegram_bot.sendDocument(chat_id, str(top_headlines = newsapi.get_top_headlines(q='bitcoin',sources='bbc-news,',category='business',language='en')))
     elif command == '/audio':
         telegram_bot.sendAudio(chat_id, audio=open('/home/pi/test.mp3'))
 
