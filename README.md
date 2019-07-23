@@ -1,26 +1,29 @@
-<<<<<<< HEAD
-						GROUP NAME:minionS
-MEMBERS:ABBEY PRECIOUS
-	AGBO PEARL ELORM
-	COLLINS M. TENGE
-	ROBERT ELINAM ADZIMAHE
+## minionS
+
+### MEMBERS
+
+* ABBEY PRECIOUS
+* AGBO PEARL ELORM
+* COLLINS M. TENGE
+* ROBERT ELINAM ADZIMAHE
 					
-PROJECT TOPIC: TELEGRAM BOT
-PROJECT DISCRIPTION:
-	This system is to act as a personal assistance that works on telegram.
-	This bot should be able to retrive information using APIs and feed the
-	the user with the necessary information.
+### PROJECT TOPIC
 
-WORK_BREAK_DOWN:
-	ABBEY PRECIOUS AND COLLINS M. TENGE				ROBERT ELINAM ADZIMAHE AND AGBO PEARL ELORM
-	working on the python programing to 				working on the API integration to activate the
-	developing the bot.						bot to retrive information.					 
-=======
-## Telegram Bot Project
+TELEGRAM BOT
 
-A project to build a telegram bot in Python.
+### PROJECT DISCRIPTION:
 
-### Team
+This system is to act as a personal assistance that works on telegram.
+This bot should be able to retrive information using APIs and feed the
+the user with the necessary information.
 
-* ...
->>>>>>> 632f508d4e9a24deaf0040f94902b740927d79c6
+### WORK_BREAK_DOWN:
+
+ABBEY PRECIOUS AND COLLINS M. TENGE				
+working on the python programing to
+developing the bot.						
+
+
+ROBERT ELINAM ADZIMAHE AND AGBO PEARL ELORM
+working on the API integration to activate the
+bot to retrive information.					 
