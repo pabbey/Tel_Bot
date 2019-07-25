@@ -53,21 +53,22 @@ def action(msg):
             #return message 
                 #if message.lower() == 'get weather': #if the user is asking for the weather then we ask the location 
             telegram_bot.sendMessage(chat_id, 'please send me your location')
-            #a=(['a','b','c','s','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'])
+            a=(['a','b','c','s','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'])
                 #else: 
                  #   bot.send_message(chat_id, 'please select an option', reply_markup=reply_markup).wait() #if not then just show the options
          
-            for command in msg:
+            if command.lower() == "ho":
                 
                 #text = command.text['message']['text']
                 #chat = command.text['message']['chat']['id']
                 
                 #mm=request.get(command) 
                 #if the message contains a location then get the weather on that latitude/longitude 
-                telegram_bot.sendMessage(command)
+                #telegram_bot.sendMessage(command)
+                #if command.lower() in a:
                 #chat_id = mgs.message.chat.id 
                 owm = OWM(OWMKEY) #initialize the Weather API 
-                obs = owm.weather_at_place(text) #Create a weather observation 
+                obs = owm.weather_at_place(command) #Create a weather observation 
                 w = obs.get_weather() #create the object Weather as w 
                 telegram_bot.sendMessage(chat_id, w )# <Weather - reference time=2013-12-18 09:20, status=Clouds> 
                 l = obs.get_location() #create a location related to our already created weather object And send the parameters 

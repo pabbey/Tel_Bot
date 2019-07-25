@@ -50,7 +50,7 @@ def action(msg):
     elif command == 'weather':
         
         def process_message(bot, u): #This is what we'll do when we get a message 
-    #Use a custom keyboard 
+                    #Use a custom keyboard 
             keyboard = [['Get Weather']] #Setting a Button to Get the Weather 
             reply_markup = ReplyKeyboardMarkup.create(keyboard) #And create the keyboard 
             if u.message.sender and u.message.text and u.message.chat: #if it is a text message then get it 
@@ -87,14 +87,15 @@ def action(msg):
                     if int(update.update_id) > int(last_update_id): #if it is a new message then get it
                         last_update_id = update.update_id 
                         process_message(bot, update) #send it to the function 
-                        continue 
+                        continue
                 continue 
             except Exception: 
                 ex = None 
                 print (traceback.format_exc() )
                 continue
-        return process_message(bot, update)       
-    telegram_bot.sendMessage(chat_id,str(process_message(bot, update)))
+
+        return (process_message(bot, update))
+        telegram_bot.sendMessage(chat_id, process_message(bot, update))
 
 telegram_bot = telepot.Bot('862774896:AAEA56RsA0Od0rxBA49vGr5zoASSD-NQySQ')
 print (telegram_bot.getMe())

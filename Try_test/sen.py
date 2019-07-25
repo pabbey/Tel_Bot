@@ -22,17 +22,21 @@ def action(msg):
     
 
     print ('Received: %s' % command)
+    greet=("hi", "hello")
 
-    if command == 'hi':
+    if command.lower() in greet: #and command.lower()== 'hi'or "hellow":
         telegram_bot.sendMessage (chat_id, str("Hi! Am Sunny , how may i help you ?"))
-    elif command == 'time':
-        telegram_bot.sendMessage(chat_id, str(now.hour)+str(":")+str(now.minute))
-    #elif command == 'location' or 'LOCATION':
-            #telegram_bot.sendMessage(chat_id, str(location.address))        
-    elif command == 'news':
-        telegram_bot.sendDocument(chat_id, top_headlines)
-    elif command == 'weather':
-        telegram_bot.sendAudio(chat_id, w.get_humidity(),(w.get_wind()),(w.get_temperature(unit='celsius')),(w.get_sunrise_time()))
+    else:
+               
+        
+        if command.lower() == 'time':
+            telegram_bot.sendMessage(chat_id, str(now.hour)+str(":")+str(now.minute))
+        #elif command == 'location' or 'LOCATION':
+                #telegram_bot.sendMessage(chat_id, str(location.address))        
+        elif command.lower() == 'news':#news
+            telegram_bot.sendMessage(chat_id, top_headlines)
+        elif command.lower() == 'weather':
+            telegram_bot.sendMessage(chat_id, [str("humidity is ")+str(w.get_humidity())+str("  windspeed is ")+str(w.get_wind())+str(w.get_temperature(unit='celsius'))+str(w.get_sunrise_time())])
 
 telegram_bot = telepot.Bot('862774896:AAEA56RsA0Od0rxBA49vGr5zoASSD-NQySQ')
 print (telegram_bot.getMe())
