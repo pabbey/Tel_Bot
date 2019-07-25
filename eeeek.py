@@ -6,6 +6,7 @@ from telepot.loop import MessageLoop
 from geopy.geocoders import Nominatim
 from newsapi import NewsApiClient
 import sys
+import re
 from time import sleep
 from twx.botapi import TelegramBot, ReplyKeyboardMarkup 
 import traceback
@@ -25,24 +26,29 @@ def process_message(msg):
     
 
     chat_id = msg['chat']['id'] 
-    message = msg['text'] 
-    if message.lower() == 'hi':
+    message = msg['text']
+#    <command> <argument> 
+#   weather accra,ghana    
+    if re.match(r'hi|hello', message.lower()):
         bot.sendMessage (chat_id, 'Hi! Am Sunny , how may i help you ?')
-    elif message.lower() == 'time':
+    elif re.match(r'time', message.lower()):
         print(message)
         bot.sendMessage (chat_id, str(now.hour)+str(":")+str(now.minute))    
-    elif message.lower() == 'get weather':
-        bot.sendMessage(chat_id, 'please send me your location')
-        print(chat_id.msg)
+    elif re.match(r'weather', message.lower()):
+        words = message.lower().split()
+        location = words[1] +", "+ words[2]
+
+        print(chat_id)
+        print(message)
         owm = OWM(OWMKEY) 
-        obs = owm.weather_at_place()  
+        obs = owm.weather_at_place(location)  
         w = obs.get_weather() 
-        return w  
-        l = obs.get_location(message)  
+        l = obs.get_location()  
         status = str(w.get_detailed_status()) 
         placename = str(l.get_name()) 
         wtime = str(w.get_reference_time(timeformat='iso')) 
         temperature = str(w.get_temperature('celsius').get('temp'))
+        
         bot.sendMessage(chat_id, 'Weather Status: ' +status +' At '+placename+' ' +wtime+' Temperature: '+ temperature+ 'C') 
     else: 
         return bot.sendMessage(chat_id, 'please select an option')
