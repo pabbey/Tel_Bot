@@ -75,15 +75,17 @@ def process_message(msg):
         owm = OWM(OWMKEY) 
         obs = owm.weather_at_place(location)  
         w = obs.get_weather()
-        hu=obs.get_humidity()
-        pr=obs.get_pressure()
+        humidity = str(w.get_humidity())
+        pressure = str(w.get_pressure())
         l = obs.get_location()  
         status = str(w.get_detailed_status()) 
-        placename = str(l.get_name()) 
+        placename = str(l.get_name())
+        wind = str(w.get_wind())
         wtime = str(w.get_reference_time(timeformat='iso')) 
         temperature = str(w.get_temperature('celsius').get('temp'))
             
         bot.sendMessage(chat_id, 'Weather Status: ' +status +' At '+placename+' Date and Time for the search is: ' +wtime+'  The Temperature is: '+ temperature+ 'C' + '  The Humidity is: ' +humidity+' ' + 'The wind speed is: ' +wind+' ' + ' The Atmospheric pressure: '+pressure+' ') 
+
     else: 
         return bot.sendMessage(chat_id, 'Services Avialable: 1. Weather.  2.Time. 3.Home Automation'  )
 bot = telepot.Bot('862774896:AAEA56RsA0Od0rxBA49vGr5zoASSD-NQySQ')
