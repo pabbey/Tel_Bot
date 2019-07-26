@@ -26,4 +26,9 @@ developing the bot.
 
 ROBERT ELINAM ADZIMAHE AND AGBO PEARL ELORM
 working on the API integration to activate the
-bot to retrive information.					 
+bot to retrive information.
+
+FUNCTION OF THE SYSTEM:
+1. GET TIME
+2. GET WEATHER
+3. HOME AUTOMATION(ON AND OFF LIGHT)					 
