@@ -57,7 +57,7 @@ def process_message(msg):
     elif message.lower() ==('on living room light'):
         lroom.on()
         bot.sendMessage (chat_id, 'living room light is on')
-    elif message.lower() ==('off living light'):
+    elif message.lower() ==('off living room light'):
         lroom.off()
         bot.sendMessage (chat_id, 'living room light is off')
     elif message.lower() ==('on outside light'):
@@ -66,6 +66,18 @@ def process_message(msg):
     elif message.lower() ==('off outside light'):
         ol.off()
         bot.sendMessage (chat_id, 'ol light is off')
+    elif message.lower() ==('off all lights'):
+        ol.off()
+        broom.off()
+        groom.off()
+        lroom.off()
+        bot.sendMessage (chat_id, 'all lights  off')
+    elif message.lower() ==('on all lights'):
+        ol.on()
+        broom.on()
+        groom.on()
+        lroom.on()
+        bot.sendMessage (chat_id, 'all lights  on')
     elif re.match(r'weather', message.lower()):
         words = message.lower().split()
         location = words[1] +", "+ words[2]
@@ -87,7 +99,7 @@ def process_message(msg):
         bot.sendMessage(chat_id, 'Weather Status: ' +status +' At '+placename+' Date and Time for the search is: ' +wtime+'  The Temperature is: '+ temperature+ 'C' + '  The Humidity is: ' +humidity+' ' + 'The wind speed is: ' +wind+' ' + ' The Atmospheric pressure: '+pressure+' ') 
 
     else: 
-        return bot.sendMessage(chat_id, 'Services Avialable: 1. Weather.  2.Time. 3.Home Automation'  )
+        return bot.sendMessage(chat_id, 'commands to prompt: 1.on bedroom light.  2. off bedroom light. 3.on garage light 4. off garage light 5. on living room light 6. off living room light 7. on outside light 8. off outside light 9. on all lights 10. off all lights 11. time 12. weather place country 13. hi or hello'  )
 bot = telepot.Bot('862774896:AAEA56RsA0Od0rxBA49vGr5zoASSD-NQySQ')
 print (bot.getMe())
 
