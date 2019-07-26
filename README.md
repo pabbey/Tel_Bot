@@ -9,13 +9,13 @@
 					
 ### PROJECT TOPIC
 
-TELEGRAM BOT
+TELEGRAM BOT ASSISTANT
 
 ### PROJECT DISCRIPTION:
 
-This system is to act as a personal assistance that works on telegram.
+This system is to act as a personal assistant that works on telegram.
 This bot should be able to retrive information using APIs and feed the
-the user with the necessary information.
+the user with the necessary information and help automate your home by oning and offing light.
 
 ### WORK_BREAK_DOWN:
 
